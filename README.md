@@ -4,7 +4,6 @@ Inspired by [this](http://pastebin.com/8fBVpjaj) wrapper written by 'oipminer'
 
 ###Features:
 - ApiKey and Secret are optional if used for just public commands.
-- Api Commands have been 'mapped' into methods within the Poloniex class for your conveniance.
 - Raises `ValueError` if the command supplied does not exist or if the api keys are not defined
 - The `poloniex.Poloniex()` object has an optional 'timeout' attribute/arg that adjusts the number of seconds to wait for a response from polo (default = 3 sec)
 - Optional api 'coach' can restrict the amount of calls per sec, keeping your api calls (that aren't threaded) under the limit (6 calls per sec). Activate the coach using `poloniex.Poloniex(coach=True)` when creating the polo object or by defining `polo._coaching = True`.
@@ -57,16 +56,10 @@ polo.timeout = 2
 ```python
 ticker = polo.api('returnTicker')
 print(ticker['BTC_CGA'])
-# or
-ticker = polo.marketTicker()
-print(ticker['BTC_CGA'])
 ```
 ##### Get Market Loan Orders
 ```python
 BTCloanOrders = polo.api('returnLoanOrders',{'currency':'BTC'})
-print(BTCloanOrders)
-# or 
-BTCloanOrders = polo.marketLoans('BTC')
 print(BTCloanOrders)
 ```
 
@@ -83,21 +76,14 @@ polo.Secret = 'yourSecretKeyHere123456789'
 ```python
 balance = polo.api('returnBalances')
 print("I have %s CGA!" % balance['CGA'])
-# or
-balance = polo.myBalances()
-print("I have %s BTC!" % balance['BTC'])
 ```
 ##### Make new CGA deposit address
 ```python
 print(polo.api('generateNewAddress',{'currency':'CGA'}))
-# or
-print(polo.generateNewAddress('CGA'))
 ```
 ##### Sell 10 CGA for 0.003 BTC
 ```python
 print(polo.api('sell', {'currencyPair': 'BTC_CGA', 'rate': '0.003' , 'amount': '10' }))
-# or
-print(polo.sell('BTC_CGA', '0.003', '10'))
 ```
 
 **Examples of WAMP applications using the websocket push API can be found [here](https://github.com/s4w3d0ff/python-poloniex/tree/master/examples).**
