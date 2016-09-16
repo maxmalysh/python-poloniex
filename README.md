@@ -58,7 +58,7 @@ polo.timeout = 2
 ticker = polo.api('returnTicker')
 print(ticker['BTC_CGA'])
 # or
-ticker = polo.marketTicker()
+ticker = polo.returnTicker()
 print(ticker['BTC_CGA'])
 ```
 ##### Get Market Loan Orders
@@ -66,7 +66,7 @@ print(ticker['BTC_CGA'])
 BTCloanOrders = polo.api('returnLoanOrders',{'currency':'BTC'})
 print(BTCloanOrders)
 # or 
-BTCloanOrders = polo.marketLoans('BTC')
+BTCloanOrders = polo.returnLoanOrders('BTC')
 print(BTCloanOrders)
 ```
 
@@ -84,7 +84,7 @@ polo.Secret = 'yourSecretKeyHere123456789'
 balance = polo.api('returnBalances')
 print("I have %s CGA!" % balance['CGA'])
 # or
-balance = polo.myBalances()
+balance = polo.returnBalances()
 print("I have %s BTC!" % balance['BTC'])
 ```
 ##### Make new CGA deposit address
